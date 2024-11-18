@@ -67,5 +67,5 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 =======
 # SimpleCart
-It is developed by using PHP Laravel Framework along with Bootstrap 
+It is simple web application developed by using PHP Laravel Framework along with Bootstrap 
 >>>>>>> 3484fd885500efa42b739d58d03a51df2232f514
