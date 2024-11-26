@@ -98,22 +98,22 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropDown">
-                            <li><a class="dropdown-item" href="{{ url('/reports/brand-report') }}">Brand Reports</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/reports/category-report') }}">Category Reports</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/admin/reports/brand-report') }}">Brand Reports</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/admin/reports/category-report') }}">Category Reports</a></li>
                         </ul>
                     </li>
                 </ul>
+                
 
             </div>
         </nav>
         <div class="row">
             <div class="col-md-3 col-lg-2">
                 <div class="sidebar">
-                    <a class="{{ Request::is('brands') ? 'active' : ''}}" href="{{ url('/brands') }}">Brands</a>
-                    <a class="{{ Request::is('categories') ? 'active' : ''}}" href="{{ url('/categories') }}">Category</a>
+                    <a class="{{ Request::is('/admin/brands') ? 'active' : ''}}" href="{{ url('/admin/brands') }}">Brands</a>
+                    <a class="{{ Request::is('/admin/categories') ? 'active' : ''}}" href="{{ url('/admin/categories') }}">Category</a>
                     <a class="{{ Request::is('products') ? 'active' : ''}}" href="{{ url('/products') }}">Products</a>
-                    <a href="#About">Cart</a>
-                    <a href="#About">Payment</a>
+                    <a href="#About">Logout</a>
                 </div>
             </div>
             <div class="col-md-9 col-lg-9">

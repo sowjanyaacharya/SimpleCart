@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('admin.dashboard')
 @section('title', 'Edit Category')
 @section('content')
     <div class="card">
         <div class="card-header">Edit Categories</div>
         <div class="card-body">
-            <form action="{{ url('categories/' . $categories->cat_id)}}" method="POST">
+            <form action="{{ url('admin/categories/' . $categories->cat_id)}}" method="POST">
                 {!! csrf_field() !!}
                 <!-- patch means update in the contrroller-->
                 @method('PATCH')

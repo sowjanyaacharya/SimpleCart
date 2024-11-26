@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('admin.dashboard')
 @section('title', 'Edit Brands')
 @section('content')
     <div class="card">
         <div class="card-header">Edit Brands</div>
         <div class="card-body">
-            <form action="{{ url('brands/' . $brands->id) }}" method="POST">
+            <form action="{{ url('admin/brands/' . $brands->id) }}" method="POST">
                 {!! csrf_field() !!}
                 @method('PATCH')
                 <input type="hidden" name="id" id="id" value="{{ $brands->id }}" />

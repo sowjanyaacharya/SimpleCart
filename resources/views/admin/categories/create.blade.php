@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.dashboard')
 <!--Passing title dyamically-->
 @section('title', 'Create Categories')
 @section('content')
@@ -6,7 +6,7 @@
         <div class="card-header">Category Details</div>
         <div class="card-body">
             <!-- it matches to the route store method-->
-            <form action="{{ url('categories') }}" method="POST">
+            <form action="{{ url('admin/categories') }}" method="POST">
                 {!! csrf_field() !!}
                 <label>Category Name</label><br />
                 <input type="text" name="cat_name" id="cat_name" class="form-control" required></br>

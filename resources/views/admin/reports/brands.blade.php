@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.dashboard')
 @section('title', 'Report-brands')
 @section('content')
 <div class="card">
@@ -6,6 +6,7 @@
         <h2>Brand Report</h2>
     </div>
     <div class="card-body">
+        <!--Here the form doesnot contain the action where to move it takes current page url while submitting-->
         <form id="brand-report-form">
             <div class="form-group">
                 <label>As on</label>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.dashboard')
 <!--Passing title dyamically-->
 @section('title', 'Create Brands')
 @section('content')
@@ -15,7 +15,7 @@
                 </div>
             @endif
             <!-- it matches to the route store method-->
-            <form action="{{ url('brands') }}" method="POST">
+            <form action="{{ url('admin/brands') }}" method="POST">
                 {!! csrf_field() !!}
                 <label>Brand Name</label><br />
                 <input type="text" name="brandname" id="brandname" class="form-control" required></br>

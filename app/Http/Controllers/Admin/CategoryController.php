@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -20,7 +20,7 @@ class CategoryController extends Controller
         //this is to load from the models Brand 
         $categories = Category::all();
         //this loads categories.index.blade file, compact is to have multple data
-        return view ('categories.index',compact('categories'));
+        return view ('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     {
         //this is to create the category we need to fetch the brand to get in dropdown
         $brands=Brand::all();
-        return view('categories.create',compact('brands'));
+        return view('admin.categories.create',compact('brands'));
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         ]);
         //to store the Category
         Category::create($input);
-        return redirect('categories')->with('flash_message', 'Categories are Added!');
+        return redirect()->route('categories.index')->with('flash_message', 'Categories are Added!');
     }
 
     /**
@@ -59,7 +59,7 @@ class CategoryController extends Controller
     public function show(string $id): view
     {
         $categories=Category::where('cat_id',$id)->firstOrFail();
-        return view('categories.show',compact('categories'));
+        return view('admin.categories.show',compact('categories'));
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoryController extends Controller
         $categories=Category::where('cat_id',$id)->firstOrFail();
         $brands=Brand::all();
         //compact to pass multiple values
-        return view('categories.edit',compact('categories','brands'));
+        return view('admin.categories.edit',compact('categories','brands'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CategoryController extends Controller
 
         ]);
         $categories->update($input);
-        return redirect('categories')->with('flash_message', 'Categories Updated');
+        return redirect()->route('categories.index')->with('flash_message', 'Categories are Upadated!');
     }
 
     /**
@@ -103,7 +103,7 @@ class CategoryController extends Controller
     {
         //Find the Category if exists
         Category::where('cat_id',$id)->delete();
-        return redirect('categories')->with('flash_message', 'Categories Deleted');
+        return redirect()->route('categories.index')->with('flash_message', 'Categories are Deleted!');
     }
 }
 

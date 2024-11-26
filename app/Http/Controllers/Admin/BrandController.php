@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -11,6 +11,7 @@ use illuminate\view\view;
 
 class BrandController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +20,7 @@ class BrandController extends Controller
         //this is to load from the models Brand 
         $brands = Brand::all();
         //this loads brands.index.blade file for brands passing the value and using brands calling in view
-        return view ('brands.index')->with('brands', $brands);
+        return view ('admin.brands.index')->with('brands', $brands);
     }
 
     /**
@@ -28,7 +29,7 @@ class BrandController extends Controller
     public function create(): view
     {
         //this is to create the brand when we click on add
-        return view('brands.create');
+        return view('admin.brands.create');
     }
 
     /**
@@ -45,7 +46,7 @@ class BrandController extends Controller
         //$input=$request->all();
         Brand::create($input);
         //it routes to the index blade file
-        return redirect('brands')->with('flash_message', 'Brands are Added!');
+        return redirect()->route('brands.index')->with('flash_message', 'Brands are Added!');
     }
 
     /**
@@ -54,7 +55,7 @@ class BrandController extends Controller
     public function show(string $id): view
     {
         $brand=Brand::find($id);
-        return view('brands.show')->with('brands', $brand);
+        return view('admin.brands.show')->with('brands', $brand);
     }
 
     /**
@@ -63,7 +64,7 @@ class BrandController extends Controller
     public function edit(string $id): view
     {
         $brand=Brand::find($id);
-        return view('brands.edit')->with('brands', $brand);
+        return view('admin.brands.edit')->with('brands', $brand);
     }
 
     /**
@@ -74,7 +75,7 @@ class BrandController extends Controller
         $brands=Brand::find($id);
         $input=$request->all();
         $brands->update($input);
-        return redirect('brands')->with('flash_message', 'Brand Updated');
+        return redirect()->route('brands.index')->with('flash_message', 'Brands Updated!');
     }
 
     /**
@@ -83,9 +84,9 @@ class BrandController extends Controller
     public function destroy(string $id)
     {
         Brand::destroy($id);
-        return redirect('brands')->with('flash_message', 'Brand Deleted');
+        return redirect()->route('brands.index')->with('flash_message', 'Brands Deleted!');
     }
-
+ 
     public function getBrandReport(Request $request){
         $validated=$request->validate([
             'date'=>'required|date',

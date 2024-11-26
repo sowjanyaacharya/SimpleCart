@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\admin\DashBoardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
+//use App\Http\Controllers\BrandController;
+use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,22 +18,26 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
+//Routing Page for Login Which is set as Default
 Route::get('/', function () {
-    return view('layout');
+    return view('login');
+});
+//when the login form is submitted
+Route::post('/login', [LoginController::class,'login'])->name('login');
+
+Route::middleware(['auth','admin'])->group(function(){
+    Route::get('/admin/dashboard', [DashBoardController::class, 'index'])->name('admin.dashboard');
+    //creates all crud routes here
+    Route::resource('/admin/brands', BrandController::class);
+    Route::resource('/admin/categories', CategoryController::class);
 });
 
-/*Route::get('/layout', function (){
-    return view('layout');
-});*/
-//creates all crud routes here
-Route::resource('/brands', BrandController::class);
-
-Route::resource('/categories',CategoryController::class);
-
-Route::get('/reports/brand-report',function (){
-    return view('reports.brands');
+//Api Routing
+Route::get('/admin/reports/brand-report',function (){
+    return view('admin.reports.brands');
 });
 
-Route::get('/reports/category-report',function(){
-    return view(view: 'reports.categories');
+Route::get('/admin/reports/category-report',function(){
+    return view(view: 'admin.reports.categories');
 });
+

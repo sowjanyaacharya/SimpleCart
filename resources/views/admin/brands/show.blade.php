@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.dashboard')
 @section('title', 'View Brands')
 @section('content')
     <div class="card">
